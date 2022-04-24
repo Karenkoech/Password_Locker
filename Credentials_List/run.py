@@ -97,7 +97,7 @@ def main():
                 print("That credentials does not exist")
 
         elif short_code == "ex":
-            print("Bye .......")
+            print("Bye " + account_name + " see you another time...")
             break
         else: print("I really didn't get that. Please use the short codes")
 
