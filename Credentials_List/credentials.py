@@ -1,3 +1,4 @@
+import pyperclip
 class Credentials():
     """
     Class that generates new instances of credentials
@@ -23,8 +24,38 @@ def __init__(self,account_name,account_password,account_email,):
         """
         Credentials.credentials_list.remove(self)
 
-new_credentials = Credentials("karen","karen123","karen@gmail.com")
-new_credentials.save_credentials()
-print(Credentials.credentials_list)
+    @classmethod
+    def find_by_name(cls,account_name):
+        """
+        Method that takes in a name and returns a credentials that matches that name.
+        """
+        for credentials in cls.credentials_list:
+            if credentials.account_name == account_name:
+                return credentials
+
+    @classmethod
+    def credentials_exist(cls,account_name):
+        """
+        Method that checks if a credentials exists from the credentials list.
+        """
+        for credentials in cls.credentials_list:
+            if credentials.account_name == account_name:
+                return True
+
+        return False
+
+    @classmethod
+    def display_credentials(cls):
+        """
+        method that returns the credentials list
+        """
+        return cls.credentials_list
+
+    @classmethod 
+    def copy_credentials(cls,account_name):
+        credentials_found = Credentials.find_by_name(account_name)
+        pyperclip.copy(credentials_found.account_password)
+        
+
 
 
