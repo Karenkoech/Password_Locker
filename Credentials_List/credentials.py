@@ -1,24 +1,25 @@
-import pyperclip
+
 class Credentials():
     """
     Class that generates new instances of credentials
     """
-    Credentials_list = [] # Empty credentials list
-def __init__(self,account_name,account_password,account_email,):
-    """
-    __init__ method that helps us define properties for our objects.
-    """
-    self.account_name = account_name
-    self.account_password = account_password
-    self.account_email = account_email
+    credentials_list = [] # Empty credentials list
 
-    def save_credentials():
+    def __init__(self,account_name,account_password,account_email,):
+        """
+        __init__ method that helps us define properties for our objects.
+        """
+        self.account_name = account_name
+        self.account_password = account_password
+        self.account_email = account_email
+
+    def save_credentials(self):
         """
         save_credentials method saves credentials objects into credentials_list
         """
         Credentials.credentials_list.append(self)
 
-    def delete_credentials():
+    def delete_credentials(self):
         """
         delete_credentials method deletes a saved credentials from the credentials_list
         """
@@ -50,12 +51,9 @@ def __init__(self,account_name,account_password,account_email,):
         method that returns the credentials list
         """
         return cls.credentials_list
-
-    @classmethod 
-    def copy_credentials(cls,account_name):
-        credentials_found = Credentials.find_by_name(account_name)
-        pyperclip.copy(credentials_found.account_password)
         
+    
 
 
 
+    
